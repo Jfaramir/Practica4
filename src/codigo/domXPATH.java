@@ -16,36 +16,42 @@ import org.w3c.dom.*;
  * @author xp
  */
 public class domXPATH {
-    Document doc;
+    Document XMLdoc;
     
-    public int AbrirXpath(){
+    String salida = "";
+    
+    
+    
+    public int EjecutaXpath(File fichero){
         
-       
-    }
-    
-    
-    
-    
-    public int EjecutaXpath(){
-        String salida = "";
         try {
              
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             
-            Document XMLDoc = factory.newDocumentBuilder().parse(new File("LibrosXML.xml"));
+            Document XMLDoc = factory.newDocumentBuilder().parse(fichero);
             
             XPath xpath = XPathFactory.newInstance().newXPath();
             
-            XPathExpression exp = xpath.compile("Libros/*/Autor");
+            XPathExpression exp = xpath.compile("Libros/Libro/*");
+            
             
             Object result = exp.evaluate(XMLDoc, XPathConstants.NODESET);
+            
+            
             NodeList nodeList = (NodeList) result;
             
-            for(int i=0; i < nodeList.getLength(); i++){
-                salida = salida + "\n" + nodeList.item(i).getChildNodes().item(0).getNodeValue();
+           
+            
+            
+            for(int i=0; i < nodeList.getLength(); i++){     
                 
+                
+                salida = salida + "\n" + nodeList.item(i).getChildNodes().item(0).getNodeValue(); 
+                 
             }
-            System.out.println(salida);
+            
+            System.out.println("1");
+            
             return 0;
             
         } catch (Exception e) {

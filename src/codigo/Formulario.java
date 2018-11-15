@@ -5,6 +5,9 @@
  */
 package codigo;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author xp
@@ -12,10 +15,25 @@ package codigo;
 public class Formulario extends javax.swing.JFrame {
 
     domXPATH getXPATH = new domXPATH();
+    File fichero = null;
     
     public Formulario() {
         initComponents();
     }
+    
+    private File dialogoSeleccionTipoRecurso() {
+        
+        int rv;
+        JFileChooser fc = new JFileChooser();
+        fc.setMultiSelectionEnabled(false);
+        fc.setDialogType(JFileChooser.OPEN_DIALOG);
+        rv = fc.showOpenDialog(this);
+        if (rv == JFileChooser.APPROVE_OPTION) {
+            fichero = fc.getSelectedFile();
+        }
+        return fichero;
+    }
+    
     
     
     
@@ -129,11 +147,13 @@ public class Formulario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        dialogoSeleccionTipoRecurso();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        getXPATH.EjecutaXpath();
+        getXPATH.EjecutaXpath(fichero);
+        jTextArea2.setText(getXPATH.salida);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
