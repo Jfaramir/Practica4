@@ -20,9 +20,9 @@ public class domXPATH {
     
     String salida = "";
     
+   
     
-    
-    public int EjecutaXpath(File fichero){
+    public int EjecutaXpath(File fichero, String cosa){
         
         try {
              
@@ -32,21 +32,18 @@ public class domXPATH {
             
             XPath xpath = XPathFactory.newInstance().newXPath();
             
-            XPathExpression exp = xpath.compile("Libros/Libro/*");
+            XPathExpression exp = xpath.compile(cosa);
             
-            
+            //Libros/Libro/*
             Object result = exp.evaluate(XMLDoc, XPathConstants.NODESET);
-            
-            
+
             NodeList nodeList = (NodeList) result;
-            
-           
-            
-            
+ 
             for(int i=0; i < nodeList.getLength(); i++){     
-                
-                
+              
                 salida = salida + "\n" + nodeList.item(i).getChildNodes().item(0).getNodeValue(); 
+                
+  //              salida = salida + "\n" + nodeList.item(i).getAttributes().item(0).getNodeValue();
                  
             }
             

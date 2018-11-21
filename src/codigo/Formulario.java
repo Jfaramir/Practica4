@@ -7,6 +7,7 @@ package codigo;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -16,6 +17,8 @@ public class Formulario extends javax.swing.JFrame {
 
     domXPATH getXPATH = new domXPATH();
     File fichero = null;
+    String cosa = "";
+    
     
     public Formulario() {
         initComponents();
@@ -152,8 +155,11 @@ public class Formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        getXPATH.EjecutaXpath(fichero);
+        
+        
+        getXPATH.EjecutaXpath(fichero,jTextArea1.getText());
         jTextArea2.setText(getXPATH.salida);
+         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
