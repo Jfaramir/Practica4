@@ -41,10 +41,11 @@ public class domXPATH {
             NodeList nodeList = (NodeList) result;
  
             
-            if(cosa == "/Libros/Libro"){
-                for(int i=0; i < nodeList.getLength(); i++){     
+            if(cosa.equals("/Libros/Libro")){
+            for(int i=0; i < nodeList.getLength(); i++){     
                 salida = salida + "\n" + nodeList.item(i).getTextContent();
-                salida = salida + nodeList.item(0).getAttributes().item(0).getNodeValue();
+                salida = salida + "\n" + nodeList.item(i).getAttributes().item(0).getNodeValue();
+                
             }
             }else{
                 for(int i=0; i < nodeList.getLength(); i++){     
@@ -64,5 +65,6 @@ public class domXPATH {
         }
          
     }    
+    
      
 }
