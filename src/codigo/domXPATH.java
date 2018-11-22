@@ -19,6 +19,7 @@ public class domXPATH {
     Document XMLdoc;
     
     String salida = "";
+   
     
    
     
@@ -39,15 +40,22 @@ public class domXPATH {
 
             NodeList nodeList = (NodeList) result;
  
-            for(int i=0; i < nodeList.getLength(); i++){     
-              
-                salida = salida + "\n" + nodeList.item(i).getChildNodes().item(0).getNodeValue(); 
-                
-  //              salida = salida + "\n" + nodeList.item(i).getAttributes().item(0).getNodeValue();
-                 
-            }
             
-            System.out.println("1");
+            if(cosa == "/Libros/Libro"){
+                for(int i=0; i < nodeList.getLength(); i++){     
+                salida = salida + "\n" + nodeList.item(i).getTextContent();
+                salida = salida + nodeList.item(0).getAttributes().item(0).getNodeValue();
+            }
+            }else{
+                for(int i=0; i < nodeList.getLength(); i++){     
+                salida = salida + "\n" + nodeList.item(i).getTextContent();
+                
+            }
+            }
+                       
+                
+            
+            
             
             return 0;
             
